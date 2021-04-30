@@ -2,7 +2,7 @@ const { urlencoded } = require("express");
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 6000;
-const data = require('../exampleresponse.json')
+const data = require('./exampleresponse.json')
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 

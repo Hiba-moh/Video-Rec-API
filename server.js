@@ -3,6 +3,9 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 5000;
 const data = require('./exampleresponse.json')
+const Pool = require ('pg').Pool;
+const cors = require ('cors');
+
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
@@ -10,9 +13,24 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 // If you want, you can copy "exampleresponse.json" into here to have some data to work with
 // let videos = data;
 
+
+const proConfig = {
+  connectionString: process.env.DATABASE_URL, //coming from Heroku addons
+};
+
+const pool = new Pool (proConfig);
+
+
+
+app.use (cors ());
+
+
+
+
 // GET "/"
-app.get("/", (req, res) => {
-res.send(data);
+app.get("/", async(req, res) => {
+  const videos = await pool.query ('select *from videos');
+res.send(videos.rows)
 });
 
 app.use (express.json ()); 

@@ -25,7 +25,7 @@ const pool = new Pool (proConfig);
 app.use (cors ());
 
 
-
+console.log(pool)
 
 // GET "/"
 app.get("/", async(req, res) => {

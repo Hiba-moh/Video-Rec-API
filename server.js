@@ -15,7 +15,11 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 
 
 const proConfig = {
-  connectionString: process.env.DATABASE_URL //coming from Heroku addons
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+   //coming from Heroku addons
 };
 
 const pool = new Pool (proConfig);

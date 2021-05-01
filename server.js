@@ -15,7 +15,7 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 
 
 const proConfig = {
-  connectionString: process.env.DATABASE_URL, //coming from Heroku addons
+  connectionString: process.env.DATABASE_URL //coming from Heroku addons
 };
 
 const pool = new Pool (proConfig);
@@ -29,9 +29,14 @@ app.use (cors ());
 
 // GET "/"
 app.get("/", async(req, res) => {
+  try{
   const videos = await pool.query ('select *from videos');
   console.log(videos.rows)
 res.send(videos.rows)
+  }
+  catch(error){
+  console.log(error)  
+  }
 });
 
 app.use (express.json ()); 

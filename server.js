@@ -35,7 +35,7 @@ app.get("/", async(req, res) => {
 res.send(videos.rows)
   }
   catch(error){
-  console.log(pool)  
+  console.log(error.message)  
   }
 });
 

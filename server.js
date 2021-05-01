@@ -30,6 +30,7 @@ app.use (cors ());
 // GET "/"
 app.get("/", async(req, res) => {
   const videos = await pool.query ('select *from videos');
+  console.log(videos.rows)
 res.send(videos.rows)
 });
 

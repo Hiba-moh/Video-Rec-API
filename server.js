@@ -48,13 +48,13 @@ app.use (urlencoded ({extended: true}));
 // POST "/"
 app.post('/',(req,res)=>{
   let  genId ;
-  const {title,url}=req.body
+  const {title,vurl}=req.body
 
 const generateId=()=>{
   return Math.floor(100000 + Math.random() * 900000);
 }
 
-  if(!title || !url){
+  if(!title || !vurl){
   res.send('error')
   }
 else{
@@ -72,7 +72,7 @@ const rating=0;
 // console.log(newVid);
 // INSERT INTO videos(id,title,vUrl,rating) VALUES(323445,'Why the Tour de France is so brutal','https://www.youtube.com/watch?v=ZacOS8NBK6U',73);
 const oneVideo = pool.query('INSERT INTO videos(id,title,vUrl,rating) VALUES($1,$2,$3,$4) RETURNING *',
-[genId,title,url,rating])
+[genId,title,vurl,rating])
 
 
 

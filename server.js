@@ -71,8 +71,8 @@ else{
 
 // console.log(newVid);
 // INSERT INTO videos(id,title,vUrl,rating) VALUES(323445,'Why the Tour de France is so brutal','https://www.youtube.com/watch?v=ZacOS8NBK6U',73);
-const oneVideo = pool.query('INSERT INTO videos(id,title,vUrl,rating) VALUES($1,$2,$3,$4) RETURNING *',
-[genId,title,vurl,0])
+const oneVideo = pool.query('INSERT INTO videos(id,title,vUrl) VALUES($1,$2,$3) RETURNING *',
+[genId,title,vurl])
 
 
 

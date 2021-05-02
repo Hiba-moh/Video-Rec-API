@@ -82,8 +82,7 @@ const oneVideo = pool.query('INSERT INTO videos(id,title,vUrl) VALUES($1,$2,$3) 
 [genId,title,vurl])
 
 
-
-res.json (status(200));
+res.status;
 })
 
 
@@ -104,7 +103,7 @@ app.delete('/:id', (req, res) => {
   let id= Number(req.params.id);
 console.log('Video to delete',id);
   pool.query("DELETE FROM videos WHERE id=$1", [id])
-  .then(() => res.json(status(200)))
+  .then(() => res.data.json)
   .catch((e) => console.error(e));
 
 // data.forEach(vid => {

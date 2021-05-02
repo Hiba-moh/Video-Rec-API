@@ -76,7 +76,7 @@ const oneVideo = pool.query('INSERT INTO videos(id,title,vUrl) VALUES($1,$2,$3) 
 
 
 
-res.json (oneVideo.rows[0]).status (200);
+res.json (status (200));
 })
 
 

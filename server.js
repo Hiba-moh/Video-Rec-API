@@ -33,7 +33,7 @@ console.log(pool)
 app.get("/", async(req, res) => {
   try{
   const videos = await pool.query ('select *from videos');
-  console.log(videos.rows)
+  // console.log(videos.rows)
 res.send(videos.rows)
   }
   catch(error){

@@ -32,11 +32,15 @@ console.log(pool)
 // GET "/"
 app.get("/", async(req, res) => {
   try{
-    if(req.query.order=='dec'){
+    if(req.query.order==='dec'){
       const videos = await pool.query ('select *from videos order by rating dec');
+      res.send(videos.rows)
+
     }
-    else if(req.query.order=='asc'){
+    else if(req.query.order==='asc'){
       const videos = await pool.query ('select *from videos order by rating asc');
+      res.send(videos.rows)
+
     }
 else
   const videos = await pool.query ('select *from videos');

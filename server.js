@@ -95,16 +95,21 @@ return res.json(vid)
 
 app.delete('/:id', (req, res) => {
   let id= Number(req.params.id);
-data.forEach(vid => {
-      if (vid.id === id) {
-          data.splice(vid, 1)
-          res.send("video deleted");
+
+  pool.query("DELETE FROM videos WHERE id=$1", [id])
+  .then(() => res.send(status))
+  .catch((e) => console.error(e));
+
+// data.forEach(vid => {
+//       if (vid.id === id) {
+//           data.splice(vid, 1)
+//           res.send("video deleted");
 // return res.json(vid);
-      }   else{
-        res.send({
-          "result": "failure",
-          "message": "Video could not be deleted"
-        })
-      }
-})
+//       }   else{
+//         res.send({
+//           "result": "failure",
+//           "message": "Video could not be deleted"
+//         })
+//       }
+// })
 })

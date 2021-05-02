@@ -95,7 +95,7 @@ return res.json(vid)
 
 app.delete('/:id', (req, res) => {
   let id= Number(req.params.id);
-
+console.log('Video to delete',id);
   pool.query("DELETE FROM videos WHERE id=$1", [id])
   .then(() => res.send(status))
   .catch((e) => console.error(e));

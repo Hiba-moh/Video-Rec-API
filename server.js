@@ -33,8 +33,8 @@ console.log(pool)
 app.get("/", async(req, res) => {
   let videos;
   try{
-    if(req.query.order==='dec'){
-     videos = await pool.query ('select *from videos order by rating dec');
+    if(req.query.order==='desc'){
+     videos = await pool.query ('select *from videos order by rating desc');
       res.send(videos.rows)
 
     }

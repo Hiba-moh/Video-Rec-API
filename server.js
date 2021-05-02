@@ -49,6 +49,7 @@ app.use (urlencoded ({extended: true}));
 app.post('/',(req,res)=>{
   let  genId ;
   const {title,vurl}=req.body
+  console.log('video data:',title,vurl)
 
 const generateId=()=>{
   return Math.floor(100000 + Math.random() * 900000);

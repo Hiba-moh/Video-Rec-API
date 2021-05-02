@@ -32,6 +32,13 @@ console.log(pool)
 // GET "/"
 app.get("/", async(req, res) => {
   try{
+    if(req.query.order=='dec'){
+      const videos = await pool.query ('select *from videos order by rating dec');
+    }
+    else if(req.query.order=='asc'){
+      const videos = await pool.query ('select *from videos order by rating asc');
+    }
+else
   const videos = await pool.query ('select *from videos');
   // console.log(videos.rows)
 res.send(videos.rows)
@@ -76,7 +83,7 @@ const oneVideo = pool.query('INSERT INTO videos(id,title,vUrl) VALUES($1,$2,$3) 
 
 
 
-res.json (status (200));
+res.json (status(200));
 })
 
 

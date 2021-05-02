@@ -11,8 +11,6 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 
 // Store and retrieve your videos from here
 // If you want, you can copy "exampleresponse.json" into here to have some data to work with
-// let videos = data;
-
 
 const proConfig = {
   connectionString: process.env.DATABASE_URL,
@@ -46,6 +44,7 @@ res.send(videos.rows)
 app.use (express.json ()); 
 app.use (urlencoded ({extended: true}));
 
+
 // POST "/"
 app.post('/',(req,res)=>{
   let  genId ;
@@ -67,12 +66,17 @@ else{
 }
 const rating=0;
 
-let newVid={"id":genId,"title":title,"url":url,"rating":rating}
-data.push(newVid);
+// let newVid={"id":genId,"title":title,"url":url,"rating":rating}
+// data.push(newVid);
 
-console.log(newVid);
-res.send('added succesfully')
+// console.log(newVid);
+// INSERT INTO videos(id,title,vUrl,rating) VALUES(323445,'Why the Tour de France is so brutal','https://www.youtube.com/watch?v=ZacOS8NBK6U',73);
+const oneVideo = pool.query('INSERT INTO videos(id,title,vUrl,rating) VALUES($1,$2,$3,$4) RETURNING *',
+[genId,title,url,rating])
 
+
+
+res.json (oneVideo.rows[0]).status (200);
 })
 
 

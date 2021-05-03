@@ -104,6 +104,7 @@ return res.json(vid)
   }
 })
 
+//Delete a video by id
 app.delete('/:id', (req, res) => {
   let id= Number(req.params.id);
 console.log('Video to delete',id);

@@ -124,3 +124,11 @@ console.log('Video to delete',id);
 //       }
 // })
 })
+app.put('/:id',(req,res)=>{
+const id = req.params.id;
+const rating = req.body.rating;
+pool.query("UPDATE videos SET rating=$1 WHERE id=$2",[rating,id])
+.then(() => res.data.json)
+.catch((e) => console.error(e));
+
+})
